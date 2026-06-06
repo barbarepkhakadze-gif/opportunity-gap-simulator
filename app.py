@@ -3,7 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 st.title("🌍 Opportunity Gap Simulator 3.0 (Stable Scientific Model)")
+st.markdown("""
+**Created by Barbare Pkhakadze**
 
+Computational model exploring how structural factors such as education, income,
+mentorship, internet access, and social inequality influence long-term outcomes.
+""")
 
 # ---------------- UI ----------------
 n = st.slider("Population size", 50, 1000, 300)
