@@ -93,6 +93,18 @@ if st.button("Run Simulation"):
     real, ideal = run_simulation(n, years)
 
     ogi = ideal - real
+    avg_ogi = np.mean(ogi)
+    std_ogi = np.std(ogi)
+
+st.write("Average OGI:", avg_ogi)
+st.write("Inequality (Std Dev):", std_ogi)
+
+st.subheader("🏛️ Policy Insights")
+
+if avg_ogi > 3:
+    st.warning("High opportunity inequality detected.")
+else:
+    st.success("Relatively equitable opportunity distribution.")
 
 
     st.subheader("📊 Results")
