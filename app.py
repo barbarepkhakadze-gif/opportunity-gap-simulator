@@ -103,7 +103,7 @@ if st.button("Run Simulation"):
 
     st.subheader("🏛️ Policy Insights")
 
-    if avg_ogi > 0.3:
+    if avg_ogi > 0.7:
         st.warning("""
         High opportunity inequality detected.
 
