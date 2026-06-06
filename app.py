@@ -96,20 +96,29 @@ if st.button("Run Simulation"):
     avg_ogi = np.mean(ogi)
     std_ogi = np.std(ogi)
 
-st.write("Average OGI:", avg_ogi)
-st.write("Inequality (Std Dev):", std_ogi)
-
-st.subheader("🏛️ Policy Insights")
-
-if avg_ogi > 3:
-    st.warning("High opportunity inequality detected.")
-else:
-    st.success("Relatively equitable opportunity distribution.")
-
-
     st.subheader("📊 Results")
-    st.write("Average OGI:", np.mean(ogi))
-    st.write("Inequality (Std Dev):", np.std(ogi))
+
+    st.write("Average OGI:", round(avg_ogi, 3))
+    st.write("Inequality (Std Dev):", round(std_ogi, 3))
+
+    st.subheader("🏛️ Policy Insights")
+
+    if avg_ogi > 0.3:
+        st.warning("""
+        High opportunity inequality detected.
+
+        The simulation suggests that structural factors are preventing many
+        individuals from reaching their full potential. Policies focused on
+        education, mentorship, digital access, and economic mobility may help
+        reduce the opportunity gap.
+        """)
+    else:
+        st.success("""
+        Relatively equitable opportunity distribution detected.
+
+        Under the current parameters, most individuals are able to achieve
+        outcomes reasonably close to their potential.
+        """)
 
     fig1, ax1 = plt.subplots()
     ax1.hist(ogi, bins=30)
