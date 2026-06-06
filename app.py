@@ -145,7 +145,7 @@ opportunity deficits than others.
 """)
 
     st.subheader("🏛️ Policy Insights")
-    if avg_ogi > 3:
+        if avg_ogi > 3:
     st.warning("""
 The simulation suggests substantial opportunity inequality.
 
@@ -155,7 +155,7 @@ Potential interventions:
 - Increase internet connectivity
 - Reduce structural barriers to advancement
 """)
-    else:
+        else:
     st.success("""
 The simulation suggests relatively equitable opportunity distribution.
 
