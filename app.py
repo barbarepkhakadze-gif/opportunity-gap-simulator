@@ -9,6 +9,9 @@ st.markdown("""
 Computational model exploring how structural factors such as education, income,
 mentorship, internet access, and social inequality influence long-term outcomes.
 
+st.write(f"Average Opportunity Gap Index (OGI): {avg_ogi:.2f}")
+st.write(f"Opportunity Inequality: {std_ogi:.2f}")
+
 - **Average Opportunity Gap Index (OGI):** {avg_ogi:.2f}
 - **Opportunity Inequality:** {std_ogi:.2f}
 
