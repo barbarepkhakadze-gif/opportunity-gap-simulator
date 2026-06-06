@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.title("🌍 Opportunity Gap Simulator 3.0 (Stable Scientific Model)")
+st.title("🌍 Opportunity Gap Simulator (Stable Scientific Model)")
 st.markdown("""
 **Created by Barbare Pkhakadze**
 
