@@ -77,9 +77,30 @@ if st.button("Run Simulation"):
 
     ogi = ideal - real
 
+
     st.subheader("📊 Results")
     st.write("Average OGI:", np.mean(ogi))
     st.write("Inequality (Std Dev):", np.std(ogi))
+    st.subheader("📋 Executive Summary")
+
+    st.markdown(f"""
+### Key Findings
+
+- **Average Opportunity Gap Index (OGI):** {avg_ogi:.2f}
+- **Opportunity Inequality:** {std_ogi:.2f}
+
+#### Interpretation
+
+The Opportunity Gap Index measures the difference between an individual's
+potential outcome (in a perfectly equal-opportunity society) and their actual
+outcome under the simulated social conditions.
+
+A higher OGI indicates that structural barriers prevented individuals from
+fully realizing their potential.
+
+The inequality measure indicates how unevenly opportunity is distributed across
+the simulated population.
+""")
 
     fig1, ax1 = plt.subplots()
     ax1.hist(ogi, bins=30)
