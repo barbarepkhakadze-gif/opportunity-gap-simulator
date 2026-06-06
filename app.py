@@ -9,8 +9,8 @@ st.markdown("""
 Computational model exploring how structural factors such as education, income,
 mentorship, internet access, and social inequality influence long-term outcomes.
 
-- **Average Opportunity Gap Index (OGI):** 
-- **Opportunity Inequality:** 
+- **Average Opportunity Gap Index (OGI)** 
+- **Opportunity Inequality** 
 
 #### Interpretation
 
