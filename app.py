@@ -9,6 +9,27 @@ st.markdown("""
 Computational model exploring how structural factors such as education, income,
 mentorship, internet access, and social inequality influence long-term outcomes.
 """)
+    st.subheader("📋 Executive Summary")
+    st.markdown(f"""
+### Key Findings
+
+- **Average Opportunity Gap Index (OGI):** {avg_ogi:.2f}
+- **Opportunity Inequality:** {std_ogi:.2f}
+
+#### Interpretation
+
+The Opportunity Gap Index measures the difference between an individual's
+potential outcome (in a perfectly equal-opportunity society) and their actual
+outcome under the simulated social conditions.
+
+A higher OGI indicates that structural barriers prevented individuals from
+fully realizing their potential.
+
+The inequality measure indicates how unevenly opportunity is distributed across
+the simulated population.
+""")
+
+
 
 # ---------------- UI ----------------
 n = st.slider("Population size", 50, 1000, 300)
@@ -81,38 +102,96 @@ if st.button("Run Simulation"):
     st.subheader("📊 Results")
     st.write("Average OGI:", np.mean(ogi))
     st.write("Inequality (Std Dev):", np.std(ogi))
-    st.subheader("📋 Executive Summary")
-
-    st.markdown(f"""
-### Key Findings
-
-- **Average Opportunity Gap Index (OGI):** {avg_ogi:.2f}
-- **Opportunity Inequality:** {std_ogi:.2f}
-
-#### Interpretation
-
-The Opportunity Gap Index measures the difference between an individual's
-potential outcome (in a perfectly equal-opportunity society) and their actual
-outcome under the simulated social conditions.
-
-A higher OGI indicates that structural barriers prevented individuals from
-fully realizing their potential.
-
-The inequality measure indicates how unevenly opportunity is distributed across
-the simulated population.
-""")
 
     fig1, ax1 = plt.subplots()
     ax1.hist(ogi, bins=30)
     ax1.set_title("Opportunity Gap Distribution")
     st.pyplot(fig1)
 
+    st.caption("""
+Histogram of Opportunity Gap Index values.
+
+Each bar represents the number of individuals whose opportunity gap falls
+within a particular range.
+
+A wider distribution suggests greater variation in opportunity access.
+A distribution concentrated near zero indicates a more equitable society.
+""")
+
     fig2, ax2 = plt.subplots()
     ax2.scatter(real, ideal, alpha=0.5)
     ax2.set_title("Real vs Ideal Outcomes")
     st.pyplot(fig2)
 
+    st.caption("""
+Actual outcomes compared with potential outcomes.
+
+Each point represents one individual.
+
+Points closer to the diagonal line indicate individuals who achieved outcomes
+closer to their theoretical potential.
+
+Large deviations suggest structural barriers limiting opportunity.
+""")
+
     fig3, ax3 = plt.subplots()
     ax3.plot(np.sort(ogi))
     ax3.set_title("Inequality Curve")
     st.pyplot(fig3)
+    st.caption("""
+Sorted Opportunity Gap Index values.
+
+This curve visualizes how opportunity gaps are distributed throughout the
+population.
+
+A steeper curve indicates that some individuals experience substantially larger
+opportunity deficits than others.
+""")
+
+    st.subheader("🏛️ Policy Insights")
+
+if avg_ogi > 3:
+    st.warning("""
+The simulation suggests substantial opportunity inequality.
+
+Potential interventions:
+- Improve educational access
+- Expand mentorship programs
+- Increase internet connectivity
+- Reduce structural barriers to advancement
+""")
+else:
+    st.success("""
+The simulation suggests relatively equitable opportunity distribution.
+
+Most individuals are able to achieve outcomes reasonably close to their
+potential under current assumptions.
+""")
+
+    st.markdown("---")
+
+st.markdown("""
+### Methodology
+
+This simulator models opportunity as a function of:
+
+- Education
+- Income
+- Mentorship
+- Internet Access
+- Social Status
+- Tax Environment
+
+Individual outcomes evolve over time through a stochastic agent-based model
+with feedback effects, where success can influence future opportunity.
+
+The Opportunity Gap Index (OGI) is defined as:
+
+OGI = Potential Outcome − Actual Outcome
+
+Higher values indicate greater unrealized potential due to structural
+constraints.
+""")
+
+
+  
